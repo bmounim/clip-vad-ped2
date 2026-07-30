@@ -1,0 +1,37 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      # The unit tests use synthetic arrays only: no dataset, no CLIP weights.
+      # torch comes from the CPU index first so pip does not pull the ~2.5 GB
+      # CUDA wheel; everything else is resolved from pyproject rather than
+      # hand-listed here, so the job cannot drift out of sync with the
+      # package's real imports.
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e ".[dev]"
+
+      - name: Run tests
+        run: python -m pytest tests -q

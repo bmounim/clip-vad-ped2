@@ -1,0 +1,236 @@
+{
+  "config": {
+    "subset": "UCSDped2",
+    "backbone": "openai/clip-vit-base-patch32",
+    "device": "cpu",
+    "k": 5,
+    "prompt_set": "ensemble",
+    "smoothing_window": 11,
+    "fusion_weight": 0.5,
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "timing": {
+    "feature_extraction_seconds": 0.12,
+    "features_from_cache": true,
+    "frames_encoded": 4560,
+    "encode_fps_measured": 8.3,
+    "memory_bank_scoring_seconds": 0.154,
+    "open_vocab_scoring_seconds": 0.006
+  },
+  "results": [
+    {
+      "method": "memory-bank (k=5)",
+      "window": 1,
+      "auc_micro": 0.8544770490264443,
+      "auc_macro": 0.8417577121955655,
+      "average_precision": 0.9675710143030116,
+      "eer": 0.2296287480555705,
+      "n_frames": 2010,
+      "n_anomalous": 1648,
+      "n_clips_scored": 12,
+      "n_clips_skipped": 4
+    },
+    {
+      "method": "memory-bank (k=5)",
+      "window": 11,
+      "auc_micro": 0.882033471007885,
+      "auc_macro": 0.8601199171079461,
+      "average_precision": 0.9741434330503067,
+      "eer": 0.1928622673389476,
+      "n_frames": 2010,
+      "n_anomalous": 1648,
+      "n_clips_scored": 12,
+      "n_clips_skipped": 4
+    },
+    {
+      "method": "open-vocab (ensemble, zero-shot)",
+      "window": 1,
+      "auc_micro": 0.8230803786944161,
+      "auc_macro": 0.8775023483038666,
+      "average_precision": 0.9608106735425748,
+      "eer": 0.268079842300059,
+      "n_frames": 2010,
+      "n_anomalous": 1648,
+      "n_clips_scored": 12,
+      "n_clips_skipped": 4
+    },
+    {
+      "method": "open-vocab (ensemble, zero-shot)",
+      "window": 11,
+      "auc_micro": 0.8360996754814138,
+      "auc_macro": 0.908177283341611,
+      "average_precision": 0.9640851640360217,
+      "eer": 0.2570938153730623,
+      "n_frames": 2010,
+      "n_anomalous": 1648,
+      "n_clips_scored": 12,
+      "n_clips_skipped": 4
+    },
+    {
+      "method": "fusion (w=0.5)",
+      "window": 1,
+      "auc_micro": 0.8526558225607467,
+      "auc_macro": 0.8533239241920705,
+      "average_precision": 0.9675263998688058,
+      "eer": 0.22673054229469503,
+      "n_frames": 2010,
+      "n_anomalous": 1648,
+      "n_clips_scored": 12,
+      "n_clips_skipped": 4
+    },
+    {
+      "method": "fusion (w=0.5)",
+      "window": 11,
+      "auc_micro": 0.8746027329292496,
+      "auc_macro": 0.8704976459144376,
+      "average_precision": 0.9729742931393404,
+      "eer": 0.2093413077294427,
+      "n_frames": 2010,
+      "n_anomalous": 1648,
+      "n_clips_scored": 12,
+      "n_clips_skipped": 4
+    }
+  ],
+  "best": {
+    "method": "memory-bank (k=5)",
+    "window": 11,
+    "auc_micro": 0.882033471007885,
+    "auc_macro": 0.8601199171079461,
+    "average_precision": 0.9741434330503067,
+    "eer": 0.1928622673389476,
+    "n_frames": 2010,
+    "n_anomalous": 1648,
+    "n_clips_scored": 12,
+    "n_clips_skipped": 4
+  },
+  "per_clip_best": [
+    {
+      "clip": "Test001",
+      "frames": 180,
+      "anomalous": 120,
+      "auc": 0.9327777777777777
+    },
+    {
+      "clip": "Test002",
+      "frames": 180,
+      "anomalous": 86,
+      "auc": 0.9444581890153388
+    },
+    {
+      "clip": "Test003",
+      "frames": 150,
+      "anomalous": 146,
+      "auc": 0.9606164383561644
+    },
+    {
+      "clip": "Test004",
+      "frames": 180,
+      "anomalous": 150,
+      "auc": 0.9702222222222223
+    },
+    {
+      "clip": "Test005",
+      "frames": 150,
+      "anomalous": 129,
+      "auc": 0.9601328903654486
+    },
+    {
+      "clip": "Test006",
+      "frames": 180,
+      "anomalous": 159,
+      "auc": 0.970649895178197
+    },
+    {
+      "clip": "Test007",
+      "frames": 180,
+      "anomalous": 135,
+      "auc": 0.8059259259259258
+    },
+    {
+      "clip": "Test008",
+      "frames": 180,
+      "anomalous": 180,
+      "auc": null
+    },
+    {
+      "clip": "Test009",
+      "frames": 120,
+      "anomalous": 120,
+      "auc": null
+    },
+    {
+      "clip": "Test010",
+      "frames": 150,
+      "anomalous": 150,
+      "auc": null
+    },
+    {
+      "clip": "Test011",
+      "frames": 180,
+      "anomalous": 180,
+      "auc": null
+    },
+    {
+      "clip": "Test012",
+      "frames": 180,
+      "anomalous": 93,
+      "auc": 0.3361759980224942
+    }
+  ],
+  "per_clip_mean_scores": {
+    "Test001": {
+      "normal": 0.019826,
+      "anomalous": 0.033083
+    },
+    "Test002": {
+      "normal": 0.017918,
+      "anomalous": 0.037629
+    },
+    "Test003": {
+      "normal": 0.017526,
+      "anomalous": 0.037285
+    },
+    "Test004": {
+      "normal": 0.016621,
+      "anomalous": 0.050192
+    },
+    "Test005": {
+      "normal": 0.019134,
+      "anomalous": 0.047195
+    },
+    "Test006": {
+      "normal": 0.016735,
+      "anomalous": 0.038729
+    },
+    "Test007": {
+      "normal": 0.018136,
+      "anomalous": 0.026564
+    },
+    "Test008": {
+      "normal": null,
+      "anomalous": 0.039057
+    },
+    "Test009": {
+      "normal": null,
+      "anomalous": 0.030453
+    },
+    "Test010": {
+      "normal": null,
+      "anomalous": 0.04043
+    },
+    "Test011": {
+      "normal": null,
+      "anomalous": 0.021183
+    },
+    "Test012": {
+      "normal": 0.018173,
+      "anomalous": 0.017078
+    }
+  },
+  "explanation_histogram_on_anomalous_frames": {
+    "cyclist": 1494,
+    "skateboard": 106,
+    "vehicle": 48
+  }
+}

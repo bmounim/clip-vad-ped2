@@ -1,0 +1,35 @@
+# Personal documents. This repository is public: never commit a CV,
+# transcript or anything else carrying contact details.
+*.pdf
+cvcv2.pdf
+
+# IDE scaffolding that is not part of the project.
+main.py
+
+# Datasets and derived features are large and redistributable from source.
+data/raw/
+data/features/
+*.tar.gz
+
+# Generated figures are committed; scratch outputs are not.
+results/scratch/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Model caches
+.cache/
+transformers_cache/
+
+# OS / editor
+.DS_Store
+._*
+Thumbs.db
+.idea/
+.vscode/

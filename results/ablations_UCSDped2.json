@@ -1,0 +1,277 @@
+{
+  "config": {
+    "subset": "UCSDped2",
+    "backbone": "openai/clip-vit-base-patch32",
+    "base_window": 11,
+    "base_k": 5
+  },
+  "ablations": {
+    "prompt_set": [
+      {
+        "prompt_set": "generic",
+        "description": "No anomaly class is named; measures unaided semantic sensitivity.",
+        "auc_raw": 0.7165641929946897,
+        "auc_smoothed": 0.7366538379016252
+      },
+      {
+        "prompt_set": "minimal",
+        "description": "Single prompt per side, naming the anomaly family only.",
+        "auc_raw": 0.8261277691358688,
+        "auc_smoothed": 0.8425548463230166
+      },
+      {
+        "prompt_set": "specific",
+        "description": "Names the Ped2 anomaly categories; yields per-frame explanations.",
+        "auc_raw": 0.8026286675964168,
+        "auc_smoothed": 0.8164508796867457
+      },
+      {
+        "prompt_set": "ensemble",
+        "description": "Paraphrase ensemble over both sides; the default configuration.",
+        "auc_raw": 0.8230803786944161,
+        "auc_smoothed": 0.8360996754814138
+      }
+    ],
+    "aggregation": [
+      {
+        "aggregate": "mean",
+        "auc": 0.8360996754814138
+      },
+      {
+        "aggregate": "max",
+        "auc": 0.8295003486563319
+      }
+    ],
+    "memory_bank_k": [
+      {
+        "k": 1,
+        "auc": 0.8826922303277369
+      },
+      {
+        "k": 3,
+        "auc": 0.882556455506088
+      },
+      {
+        "k": 5,
+        "auc": 0.882033471007885
+      },
+      {
+        "k": 10,
+        "auc": 0.8817987984766401
+      },
+      {
+        "k": 20,
+        "auc": 0.8811266292978599
+      }
+    ],
+    "temporal_window": [
+      {
+        "window": 1,
+        "auc_memory_bank": 0.8544770490264443,
+        "auc_open_vocab": 0.8230803786944161
+      },
+      {
+        "window": 5,
+        "auc_memory_bank": 0.8694684331920828,
+        "auc_open_vocab": 0.8298406238266374
+      },
+      {
+        "window": 11,
+        "auc_memory_bank": 0.882033471007885,
+        "auc_open_vocab": 0.8360996754814138
+      },
+      {
+        "window": 21,
+        "auc_memory_bank": 0.887419205599957,
+        "auc_open_vocab": 0.8432052244810385
+      },
+      {
+        "window": 31,
+        "auc_memory_bank": 0.8898514187630746,
+        "auc_open_vocab": 0.8502839537628064
+      },
+      {
+        "window": 51,
+        "auc_memory_bank": 0.8891775733519285,
+        "auc_open_vocab": 0.8594864694523414
+      }
+    ],
+    "fusion_weight": [
+      {
+        "weight": 0.0,
+        "auc": 0.882033471007885
+      },
+      {
+        "weight": 0.2,
+        "auc": 0.8814484659121387
+      },
+      {
+        "weight": 0.4,
+        "auc": 0.8787044735289385
+      },
+      {
+        "weight": 0.5,
+        "auc": 0.8746027329292496
+      },
+      {
+        "weight": 0.6,
+        "auc": 0.8686118784530388
+      },
+      {
+        "weight": 0.8,
+        "auc": 0.8525887732661053
+      },
+      {
+        "weight": 1.0,
+        "auc": 0.8360996754814138
+      }
+    ],
+    "micro_vs_macro": [
+      {
+        "method": "memory bank",
+        "auc_micro": 0.882033471007885,
+        "auc_macro": 0.8601199171079461,
+        "gap": -0.021913553899938876
+      },
+      {
+        "method": "open-vocab",
+        "auc_micro": 0.8360996754814138,
+        "auc_macro": 0.908177283341611,
+        "gap": 0.07207760786019712
+      }
+    ],
+    "calibrated_fusion": [
+      {
+        "window": 11,
+        "weight": 0.0,
+        "auc_micro": 0.882033471007885,
+        "auc_macro": 0.8601199171079461
+      },
+      {
+        "window": 11,
+        "weight": 0.2,
+        "auc_micro": 0.8840432736147615,
+        "auc_macro": 0.8910027659777184
+      },
+      {
+        "window": 11,
+        "weight": 0.4,
+        "auc_micro": 0.8705697178565681,
+        "auc_macro": 0.9012146061283584
+      },
+      {
+        "window": 11,
+        "weight": 0.5,
+        "auc_micro": 0.86395195247546,
+        "auc_macro": 0.9024595627289262
+      },
+      {
+        "window": 11,
+        "weight": 0.6,
+        "auc_micro": 0.8568631657994958,
+        "auc_macro": 0.9024425589697953
+      },
+      {
+        "window": 11,
+        "weight": 0.8,
+        "auc_micro": 0.8393297752507644,
+        "auc_macro": 0.9015278679214568
+      },
+      {
+        "window": 11,
+        "weight": 1.0,
+        "auc_micro": 0.8152615928230436,
+        "auc_macro": 0.900152265176938
+      },
+      {
+        "window": 31,
+        "weight": 0.0,
+        "auc_micro": 0.8898514187630746,
+        "auc_macro": 0.8685327449398296
+      },
+      {
+        "window": 31,
+        "weight": 0.2,
+        "auc_micro": 0.9047916778415491,
+        "auc_macro": 0.9168150038527172
+      },
+      {
+        "window": 31,
+        "weight": 0.4,
+        "auc_micro": 0.8987807085769458,
+        "auc_macro": 0.926152471500242
+      },
+      {
+        "window": 31,
+        "weight": 0.5,
+        "auc_micro": 0.8923842058681543,
+        "auc_macro": 0.9278085584474094
+      },
+      {
+        "window": 31,
+        "weight": 0.6,
+        "auc_micro": 0.8847104140964438,
+        "auc_macro": 0.9293967074415957
+      },
+      {
+        "window": 31,
+        "weight": 0.8,
+        "auc_micro": 0.8658963820200611,
+        "auc_macro": 0.9317362900095918
+      },
+      {
+        "window": 31,
+        "weight": 1.0,
+        "auc_micro": 0.8406095786622324,
+        "auc_macro": 0.9327688482025467
+      }
+    ],
+    "baselines_by_window": [
+      {
+        "window": 11,
+        "method": "memory bank",
+        "auc_micro": 0.882033471007885,
+        "auc_macro": 0.8601199171079461
+      },
+      {
+        "window": 11,
+        "method": "open-vocab",
+        "auc_micro": 0.8360996754814138,
+        "auc_macro": 0.908177283341611
+      },
+      {
+        "window": 31,
+        "method": "memory bank",
+        "auc_micro": 0.8898514187630746,
+        "auc_macro": 0.8685327449398296
+      },
+      {
+        "window": 31,
+        "method": "open-vocab",
+        "auc_micro": 0.8502839537628064,
+        "auc_macro": 0.9439794987550786
+      }
+    ],
+    "monotonicity_control": {
+      "auc_raw": 0.8360996754814138,
+      "auc_global_rank": 0.8360996754814138,
+      "note": "A global rank transform is monotone and must not change AUC; only per-clip ranking can, because it discards cross-clip scale."
+    }
+  },
+  "best_fusion_weight": {
+    "weight": 0.0,
+    "auc": 0.882033471007885
+  },
+  "best_calibrated_fusion": {
+    "window": 31,
+    "weight": 0.2,
+    "auc_micro": 0.9047916778415491,
+    "auc_macro": 0.9168150038527172
+  },
+  "best_calibrated_fusion_by_macro": {
+    "window": 31,
+    "weight": 1.0,
+    "auc_micro": 0.8406095786622324,
+    "auc_macro": 0.9327688482025467
+  }
+}
